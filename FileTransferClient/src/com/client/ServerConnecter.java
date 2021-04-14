@@ -20,6 +20,7 @@ public class ServerConnecter {//얘가 연결해서 보내는거 담당
 			String ip = ipadd.getHostAddress();
 			//소켓생성하기
 			soc = new Socket(ip, 3000); 
+			//soc = new Socket("edc3665.iptime.org", 3000); 
 			oos = new ObjectOutputStream(soc.getOutputStream());
 			ois = new ObjectInputStream(soc.getInputStream());
 			clientth = new ClientThread(this);

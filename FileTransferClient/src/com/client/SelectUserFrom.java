@@ -23,8 +23,8 @@ import javax.swing.table.DefaultTableModel;
 public class SelectUserFrom implements ActionListener,ItemListener{
 	//선언부
 	ServerConnecter connect 	= null;
-	String onlines[] = null;
-	Vector<String> withRoomIDs = new Vector<>();;
+	String 			onlines[] 	= null;
+	Vector<String> 	withRoomIDs = new Vector<>();
 	
 	JFrame jf = new JFrame();
 	JPanel jp_north = new JPanel();

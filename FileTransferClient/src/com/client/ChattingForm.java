@@ -22,18 +22,17 @@ import vo.client.Protocol;
 public class ChattingForm implements ActionListener{
 	public static ChattingForm chat = null;
 	//선언부
-	ServerConnecter connect 	= null;
-	String roomName = null; //방 이름
-	String p_id = null; //현재 유저 아이디
-	JFrame 	jf = new JFrame();
-	JPanel	jp_first = new JPanel();
-	JPanel	jp_first_south = new JPanel();
+	ServerConnecter connect = null;
+	String 			roomName = null; //방 이름
+	String 			p_id = null; //현재 유저 아이디
+	JFrame 			jf = new JFrame();
+	JPanel			jp_first = new JPanel();
+	JPanel			jp_first_south = new JPanel();
 	
-	JTextField jtf_msg = new JTextField(); 
-	JTextArea jta_display = new JTextArea();
-	JScrollPane jsp_display = new JScrollPane(jta_display);
-	
-	JButton jbtn_send  = new JButton("전송");
+	JTextField 		jtf_msg 	= new JTextField(); 
+	JTextArea 		jta_display = new JTextArea();
+	JScrollPane 	jsp_display = new JScrollPane(jta_display);
+	JButton 		jbtn_send  = new JButton("전송");
 	
 	//생성자
 	public ChattingForm() {}
@@ -44,7 +43,6 @@ public class ChattingForm implements ActionListener{
 		this.roomName = roomName;
 		initDisplay();
 	}
-	
 	
 	//화면처리
 	public void initDisplay() {
@@ -64,7 +62,6 @@ public class ChattingForm implements ActionListener{
 		jf.setTitle("방 이름 : "+roomName + "  /  내 아이디 : "+p_id); //앞에 방 이름 나중에 삭제할 것
 		jf.add(jp_first);
 		jf.setBounds(1000, 200, 500, 600);
-		//jf.setSize(500, 600);
 		jf.setVisible(true);
 	}
 	

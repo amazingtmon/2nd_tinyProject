@@ -20,7 +20,6 @@ public class ClientThread extends Thread{
 		boolean isStop = false;
 		while(!isStop) {
 			try {
-				//sleep(1000);
 				String msg = connect.ois.readObject().toString();
 				System.out.println("클라이언트값"+msg);
 				StringTokenizer st = new StringTokenizer(msg, "#");
@@ -35,45 +34,11 @@ public class ClientThread extends Thread{
 					join.addResult(st.nextToken());
 				}
 				case Protocol.showUser:{//120번
-					String first = st.nextToken();//온라인유저
-					String second = st.nextToken();//오프라인유저
-					//System.out.println("#1: "+first);
-					//System.out.println("#2: "+second);
+					String p_onlineUser = st.nextToken();//온라인유저
+					String p_offlineUser = st.nextToken();//오프라인유저
 
 					MainModel main = new MainModel();
-					Vector<String> onlineUser = new Vector<>();
-					Vector<String> offlineUser = new Vector<>();
-
-					if(first.contains("[")||first.contains("]")) {
-						String s_onlineUser = first.replaceAll("\\p{Punct}", "");
-						//System.out.println("on: "+s_onlineUser);
-						if(s_onlineUser.contains(" ")) {
-							String[] one = s_onlineUser.split(" ");
-							//System.out.println("one: "+one.length);
-							for(int i=0;i<one.length;i++) {
-								String result = one[i];
-								onlineUser.add(result);
-							}
-						}else {
-							onlineUser.add(s_onlineUser);
-						}
-					}
-
-					if(second.contains("[")||second.contains("]")) {
-						String s_offlineUser = second.replaceAll("\\p{Punct}", "");
-						//System.out.println("off: "+s_offlineUser);
-						if(s_offlineUser.contains(" ")) {
-							String[] two = s_offlineUser.split(" ");
-							//System.out.println("two: "+two.length);
-							for(int i=0;i<two.length;i++) {
-								String result = two[i];
-								offlineUser.add(result);
-							}
-						}
-					}
-					//System.out.println("#1 size: "+onlineUser.size());
-					//System.out.println("#2 size: "+offlineUser.size());
-					main.showUser(onlineUser, offlineUser);
+					main.filter(p_onlineUser, p_offlineUser);
 
 				}break;
 				case Protocol.createRoom1:{//200번#p_id#roomName
